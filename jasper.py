@@ -10,11 +10,10 @@ import yaml
 import argparse
 
 from client import tts, stt, jasperpath, diagnose
+from client.conversation import Conversation
 
 # Add jasperpath.LIB_PATH to sys.path
 sys.path.append(jasperpath.LIB_PATH)
-
-from client.conversation import Conversation
 
 parser = argparse.ArgumentParser(description='Jasper Voice Control Center')
 parser.add_argument('--local', action='store_true',
@@ -137,7 +136,7 @@ if __name__ == "__main__":
     try:
         app = Jasper()
     except Exception:
-        logger.exception("Error occured!", exc_info=True)
+        logger.error("Error occured!", exc_info=True)
         sys.exit(1)
 
     app.run()
